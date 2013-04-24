@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/trungduyvu/linkedin
+  revision: 046bc535816cfd9769ce6c6d7f019361b1b88ef9
+  specs:
+    linkedin (0.3.7)
+      hashie (~> 1.2)
+      multi_json (~> 1.0)
+      oauth (~> 0.4)
+      oauth2 (~> 0.9.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -29,8 +39,14 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.2)
+    better_errors (0.8.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.1)
+      debug_inspector (>= 0.0.1)
     builder (3.0.4)
     chunky_png (1.2.8)
+    coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -44,31 +60,42 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faraday (0.8.7)
+      multipart-post (~> 1.1)
     fssm (0.2.10)
     haml (4.0.2)
       tilt
     hashie (1.2.0)
     hike (1.2.2)
+    httpauth (0.2.0)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.7)
-    linkedin (0.3.7)
-      hashie (~> 1.2)
-      multi_json (~> 1.0)
-      oauth (~> 0.4)
+    jwt (0.1.8)
+      multi_json (>= 1.5)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.2)
+    multi_xml (0.5.3)
+    multipart-post (1.2.0)
     oauth (0.4.7)
+    oauth2 (0.9.1)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      multi_xml (~> 0.5)
+      rack (~> 1.2)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -124,11 +151,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   coffee-rails (~> 3.2.1)
   compass-rails
   haml
   jquery-rails
-  linkedin
+  linkedin!
+  oauth2
   rails (= 3.2.13)
   rails_config
   requirejs-rails
