@@ -1,30 +1,28 @@
-- unless @linkedinvalid
-  %h1 Login to LinkedIn!
-  %p= link_to 'Login', @oauth_url
-- else
-  %h1 Success!
-  %ul
-    - for connection in @connections.all
-      - unless connection.headline.nil?
-        %li
-          = link_to "connection/#{ connection.id }" do
-            = image_tag connection.picture_url
-            %br
-            = "#{ connection.first_name } #{ connection.last_name }"
-            -# connection.headline.split(' ').keep_if{ |i| i.length > 3 }.sample }
-            %br
-            = connection.headline
-
-%article.page
-  %h1 Authenticate with LinkedIn
-  
-  %a{:class => "btn", :href => "http://linkedin.com"} Connect GiftShop to LinkedIn
-
+%article{class: "page v-align"}
+  %div.mid
+    - unless @linkedinvalid
+      %h1 Authenticate with LinkedIn!
+      = link_to 'Connect GiftShop to LinkedIn', @oauth_url, class: "btn"
+    - else
+      %h1 Success!
+      %ul
+        - for connection in @connections.all
+          - unless connection.headline.nil?
+            %li
+              = link_to "connection/#{ connection.id }" do
+                = image_tag connection.picture_url
+                %br
+                = "#{ connection.first_name } #{ connection.last_name }"
+                -# connection.headline.split(' ').keep_if{ |i| i.length > 3 }.sample }
+                %br
+                = connection.headline
 
 %article.page
   %h1 Select a connection
-
-  %input{class: "big-search", placeholder: "Search for a connection here...", type: "text"}
+  
+  %div.big-search
+    %input{placeholder: "Search for a connection here...", type: "text", data: { type: "connection-search" } }
+    %i.icon-search
   
   %div.connection-results
     %div.fade
@@ -39,14 +37,60 @@
   
   %h3 What kind of gifts are you looking for?
   %div.gift-categories
-    - ['Books','Music','DVDs','Toys','Games','Computer','Electronic Devices','Beauty and Health'].each do |cat|
-      %input{type: "checkbox", name: "cats[]", value: cat, id: "f-" + cat.downcase, checked: "checked", class: "gift-check"}
-      %label{class: "gift-category", for: 'f-' + cat.downcase }
-        %span{class: "icon-" + cat.downcase }
-        = cat
+    -# ['Books','Music','DVDs','Toys','Games','Computer','Electronic Devices','Beauty and Health'].each do |cat|
+    %input{type: "checkbox", name: "cats[]", value: 'books', id: "f-books", checked: "checked", class: "gift-check"}
+    %label{class: "gift-category", for: 'f-books' }
+      %span.icon-books
+      Books
+
+    %input{type: "checkbox", name: "cats[]", value: 'music', id: "f-music", checked: "checked", class: "gift-check"}
+    %label{class: "gift-category", for: 'f-music' }
+      %span.icon-music
+      Music
+
+    %br
+
+    %input{type: "checkbox", name: "cats[]", value: 'dvds', id: "f-dvds", checked: "checked", class: "gift-check"}
+    %label{class: "gift-category", for: 'f-dvds' }
+      %span.icon-dvds
+      DVDs
+
+    %input{type: "checkbox", name: "cats[]", value: 'games', id: "f-games", checked: "checked", class: "gift-check"}
+    %label{class: "gift-category", for: 'f-games' }
+      %span.icon-games
+      Games
+
+    %br
+
+    %input{type: "checkbox", name: "cats[]", value: 'computer', id: "f-computer", checked: "checked", class: "gift-check"}
+    %label{class: "gift-category", for: 'f-computer' }
+      %span.icon-computer
+      Computer
+
+    %input{type: "checkbox", name: "cats[]", value: 'electric', id: "f-electric", class: "gift-check"}
+    %label{class: "gift-category", for: 'f-electric' }
+      %span.icon-electric
+      Electronic Devices
+
+    %br
+
+    %input{type: "checkbox", name: "cats[]", value: 'beauty', id: "f-beauty", class: "gift-check"}
+    %label{class: "gift-category", for: 'f-beauty' }
+      %span.icon-beauty
+      Beauty and Health
+
+    %input{type: "checkbox", name: "cats[]", value: 'toys', id: "f-toys", class: "gift-check"}
+    %label{class: "gift-category", for: 'f-toys' }
+      %span.icon-toys
+      Toys
+
 
   %h3 How much do you want to spend?
   %div Coming...
+
+  %button{type: "button", class: "btn"}
+    %i.icon-search
+    Search some awesome gifts now!
 
 %article.page
   %h1 Gift listing
@@ -77,4 +121,6 @@
     %div.front-right
     %div.top
 
-  %a{class: "btn-big", href: "http://bol.com"} Buy this gift!
+  %a{class: "btn-big", href: "http://bol.com", data: { type: "purchase" } }
+    %i.icon-basket
+    Buy this gift!

@@ -70,11 +70,10 @@
     // text
     text-align: center;
     line-height: 40px;
-    font-weight: bold;
+    font-size: 1.5em;
 
     // style
     color: #fff;
-    background: #f00;
     cursor: pointer;
 
     @include opacity( .62 );

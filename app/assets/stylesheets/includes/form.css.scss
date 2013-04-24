@@ -4,14 +4,17 @@
   padding: .3em .62em;
 
   // style
+  cursor: pointer;
   color: #fff;
   text-shadow: 1px 1px 1px rgba(0,0,0,.35);
+  border: none;
   @include border-radius( .3em );
   @include background-image( linear-gradient(#287bbc,#23639a) );
   @include box-shadow( 1px 1px 3px rgba(0,0,0,.2) );
 
   // text
   font-weight: bold;
+  font-size: 1em;
 
   &:hover {
     @include background-image( linear-gradient(lighten(#287bbc,5%),lighten(#23639a,5%)) );
@@ -29,20 +32,47 @@
 }
 
 .big-search {
-  font-size: .8rem;
-  font-style: italic;
-  padding: 10px;
-  margin: 0 0 10px 0;
-  width: 220px;
-
-  background: #fff;
-  border: 1px solid #ddd;
+  position: relative;
+  width: intrinsic;
+  margin: 0 auto;
   
-  @include transition( all 400ms $anim );
+  input {
+    // layout
+    padding: 10px;
+    height: 20px;
+    margin: 0 0 10px 0;
+    width: 240px;
 
-  &:focus {
-    outline: none;
-    font-style: normal;
-    width: 400px;
+    // text
+    font-size: .8rem;
+    font-style: italic;
+    
+    // style
+    background: #fff;
+    border: 1px solid #ddd;
+    
+    @include transition( all 400ms $anim );
+
+    &:focus {
+      outline: none;
+      font-style: normal;
+      width: 300px;
+    }
+  }
+
+  .icon-search {
+    // layout
+    position: absolute;
+    top: 1px; right: 1px;
+    width: 40px;
+    height: 40px;
+
+    // style
+    background: #eee;
+    border-left: 1px solid #ddd;
+
+    // text
+    line-height: 40px;
+    text-align: center;
   }
 }

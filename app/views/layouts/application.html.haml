@@ -7,8 +7,10 @@
     = csrf_meta_tags
 
   %body
-
-    %a#logo
+    
+    %div.global-nav
+      = image_tag 'logo.png'
+      %h1 The GiftShop
 
     %div.wrapper
       = yield
