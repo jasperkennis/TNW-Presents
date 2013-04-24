@@ -3,5 +3,14 @@
   %p= link_to 'Login', @oauth_url
 - else
   %h1 Success!
-  = @profile.inspect
-  -# = @connections.inspect
+  %ul
+    - for connection in @connections.all
+      - unless connection.headline.nil?
+        %li
+          = link_to "connection/#{ connection.id }" do
+            = image_tag connection.picture_url
+            %br
+            = "#{ connection.first_name } #{ connection.last_name }"
+            -# connection.headline.split(' ').keep_if{ |i| i.length > 3 }.sample }
+            %br
+            = connection.headline
