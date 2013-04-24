@@ -16,65 +16,67 @@
             %span.name= "#{ connection.first_name } #{ connection.last_name }"
             -# = link_to "connection/#{ connection.id }"
 
-  %article.page
-    %h1 Define parameters
+  -#
+    %article.page
+      %h1 Define parameters
+      
+      %h3 What kind of gifts are you looking for?
+      %div.gift-categories
+        -# ['Books','Music','DVDs','Toys','Games','Computer','Electronic Devices','Beauty and Health'].each do |cat|
+        %input{type: "checkbox", name: "cats[]", value: 'books', id: "f-books", checked: "checked", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-books' }
+          %span.icon-books
+          Books
     
-    %h3 What kind of gifts are you looking for?
-    %div.gift-categories
-      -# ['Books','Music','DVDs','Toys','Games','Computer','Electronic Devices','Beauty and Health'].each do |cat|
-      %input{type: "checkbox", name: "cats[]", value: 'books', id: "f-books", checked: "checked", class: "gift-check"}
-      %label{class: "gift-category", for: 'f-books' }
-        %span.icon-books
-        Books
+        %input{type: "checkbox", name: "cats[]", value: 'music', id: "f-music", checked: "checked", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-music' }
+          %span.icon-music
+          Music
+    
+        %br
+    
+        %input{type: "checkbox", name: "cats[]", value: 'dvds', id: "f-dvds", checked: "checked", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-dvds' }
+          %span.icon-dvds
+          DVDs
+    
+        %input{type: "checkbox", name: "cats[]", value: 'games', id: "f-games", checked: "checked", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-games' }
+          %span.icon-games
+          Games
+    
+        %br
+    
+        %input{type: "checkbox", name: "cats[]", value: 'computer', id: "f-computer", checked: "checked", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-computer' }
+          %span.icon-computer
+          Computer
+    
+        %input{type: "checkbox", name: "cats[]", value: 'electric', id: "f-electric", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-electric' }
+          %span.icon-electric
+          Electronic Devices
+    
+        %br
+    
+        %input{type: "checkbox", name: "cats[]", value: 'beauty', id: "f-beauty", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-beauty' }
+          %span.icon-beauty
+          Beauty and Health
+    
+        %input{type: "checkbox", name: "cats[]", value: 'toys', id: "f-toys", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-toys' }
+          %span.icon-toys
+          Toys
+    
+    
+      %h3 How much do you want to spend?
+      %div Coming...
+    
+      %button{type: "button", class: "btn"}
+        %i.icon-search
+        Search some awesome gifts now!
   
-      %input{type: "checkbox", name: "cats[]", value: 'music', id: "f-music", checked: "checked", class: "gift-check"}
-      %label{class: "gift-category", for: 'f-music' }
-        %span.icon-music
-        Music
-  
-      %br
-  
-      %input{type: "checkbox", name: "cats[]", value: 'dvds', id: "f-dvds", checked: "checked", class: "gift-check"}
-      %label{class: "gift-category", for: 'f-dvds' }
-        %span.icon-dvds
-        DVDs
-  
-      %input{type: "checkbox", name: "cats[]", value: 'games', id: "f-games", checked: "checked", class: "gift-check"}
-      %label{class: "gift-category", for: 'f-games' }
-        %span.icon-games
-        Games
-  
-      %br
-  
-      %input{type: "checkbox", name: "cats[]", value: 'computer', id: "f-computer", checked: "checked", class: "gift-check"}
-      %label{class: "gift-category", for: 'f-computer' }
-        %span.icon-computer
-        Computer
-  
-      %input{type: "checkbox", name: "cats[]", value: 'electric', id: "f-electric", class: "gift-check"}
-      %label{class: "gift-category", for: 'f-electric' }
-        %span.icon-electric
-        Electronic Devices
-  
-      %br
-  
-      %input{type: "checkbox", name: "cats[]", value: 'beauty', id: "f-beauty", class: "gift-check"}
-      %label{class: "gift-category", for: 'f-beauty' }
-        %span.icon-beauty
-        Beauty and Health
-  
-      %input{type: "checkbox", name: "cats[]", value: 'toys', id: "f-toys", class: "gift-check"}
-      %label{class: "gift-category", for: 'f-toys' }
-        %span.icon-toys
-        Toys
-  
-  
-    %h3 How much do you want to spend?
-    %div Coming...
-  
-    %button{type: "button", class: "btn"}
-      %i.icon-search
-      Search some awesome gifts now!
   
   %article.page
     %h1 Gift listing
