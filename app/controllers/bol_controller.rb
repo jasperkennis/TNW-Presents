@@ -1,6 +1,7 @@
 class BolController < ApplicationController
   def suggestions
     @term = params[:term]
-    @recommendations = Bol::Recommendations
+    @product = Bol.search(@term).limit(1)
+    @recommendations = Bol.recommendations @product.first.id
   end
 end
