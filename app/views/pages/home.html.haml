@@ -14,3 +14,68 @@
             -# connection.headline.split(' ').keep_if{ |i| i.length > 3 }.sample }
             %br
             = connection.headline
+
+%article.page
+  %h1 Authenticate with LinkedIn
+  
+  %a{:class => "btn", :href => "http://linkedin.com"} Connect GiftShop to LinkedIn
+
+
+%article.page
+  %h1 Select a connection
+
+  %input{class: "big-search", placeholder: "Search for a connection here...", type: "text"}
+  
+  %div.connection-results
+    %div.fade
+    %div.persons
+    - ['Willem Alexander','Jan','Klaas','Wim','Wimmer','Janus','Klazien'].each do |name|
+      %button{type: "button", class: "person", style: "background-image:url(http://m.c.lnkd.licdn.com/media/p/3/000/09a/06f/3100ba5.jpg)", data: { name: name.downcase }  }
+        %span.name= name
+
+
+%article.page
+  %h1 Define parameters
+  
+  %h3 What kind of gifts are you looking for?
+  %div.gift-categories
+    - ['Books','Music','DVDs','Toys','Games','Computer','Electronic Devices','Beauty and Health'].each do |cat|
+      %input{type: "checkbox", name: "cats[]", value: cat, id: "f-" + cat.downcase, checked: "checked", class: "gift-check"}
+      %label{class: "gift-category", for: 'f-' + cat.downcase }
+        %span{class: "icon-" + cat.downcase }
+        = cat
+
+  %h3 How much do you want to spend?
+  %div Coming...
+
+%article.page
+  %h1 Gift listing
+
+  %div.gift-results
+    - for x in 0...4
+      %div.gift-result
+        %div.wrap
+          %div.gift-info
+            %h4 Andre F*cking Rieu
+            %p Ter gelegenheid van de aanstaande kroningsfeestelijkheden schreef de Koning van de Wals een splinternieuw stuk: De Kroningswals - een wals voor de Koning. Deze staat op deze bijzondere compilatie, waarop ook een niet eerder verschenen arrangement van het Wilhelmus.
+          %div{style: "background-image: url(http://s.s-bol.com/imgbase0/imagebase/large/FC/3/0/3/1/1000004013631303.jpg)", class: "gift-preview"}
+        %i{class: "icon-info toggle"}
+        %div.gift-price
+          &euro; 8,99
+          %a{class: "btn buy", href: "http://bol.com"} Buy
+
+
+%article.page
+  %h1 Unboxing
+  
+  %div.gift
+    %img{src: "http://s.s-bol.com/imgbase0/imagebase/large/FC/3/0/3/1/1000004013631303.jpg", class: "gift-image"}
+    %div.bottom
+    %div.back-left
+    %div.back-right
+    %div.front-left
+    %div.front-right
+    %div.top
+
+  %a{class: "btn-big", href: "http://bol.com"} Buy this gift!
+>>>>>>> Basic frontend
