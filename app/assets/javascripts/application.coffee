@@ -2,7 +2,7 @@ define ['jquery'], () ->
   
   # Fuzzy search for connections!
   $('[data-type="connection-search"]').on 'keyup', ( e ) ->
-    q = $(this).val().toLowerCase()
+    q = $( e.currentTarget ).val().toLowerCase()
     
     if q != ""
       $('[data-name]').addClass 'hidden'
