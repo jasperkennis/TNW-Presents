@@ -1,0 +1,83 @@
+.connection-results {
+  // layout
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  margin: 0 20px;
+
+  // style
+  background: #fff;
+  
+  .fade {
+    position: absolute;
+    left: 0; bottom: 0;
+    height: 100px;
+    width: 100%;
+    z-index: 20;
+
+    @include background-image( linear-gradient( rgba(255,255,255,0), #fff ) )
+  }
+
+  .person {
+    // layout
+    position: relative;
+    display: block;
+    float: left;
+    width: 20%;
+    height: 200px;
+    overflow: hidden;
+
+    @include respond-to( tablet ){
+      width: 25%;
+    }
+
+    @include respond-to( mobile-landscape ){
+      width: 50%;
+    }
+
+    @include respond-to( mobile-portrait ){
+      width: 100%;
+    }
+
+    // style
+    cursor: pointer;
+    border: none;
+    @include filter( grayscale( 50% ) );
+    @include transition( all 300ms $anim );
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    @include background-size( cover );
+
+    // text
+    text-align: left;
+
+    &:hover {
+      @include filter( grayscale( 0% ) );
+
+
+      .name {
+        text-shadow: 0 1px 3px rgba(0,0,0,.6);
+      }
+    }
+
+    &.hidden {
+      position: absolute;
+      @include opacity( 0 );
+    }
+
+    .name {
+      // layout
+      position: absolute;
+      left: 10px; bottom: 10px;
+
+      // text
+      font-size: (22/14) + em;
+      font-weight: bold;
+
+      // style
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,.35);
+    }
+  }
+}

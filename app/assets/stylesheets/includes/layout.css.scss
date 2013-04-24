@@ -1,0 +1,18 @@
+#logo {
+  // layout
+  position: fixed;
+  top: 20px; left: 20px;
+  display: block;
+  width: 150px;
+  height: 150px;
+  z-index: 100;
+
+  // style
+  background: #ddd;
+}
+
+.page {
+  @extend %clearfix;
+  min-height: 100%;
+}
+

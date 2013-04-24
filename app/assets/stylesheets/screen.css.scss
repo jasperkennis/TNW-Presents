@@ -5,11 +5,19 @@
 
 @import "compass";
 
+// vars
+$blue: #287bbc;
+$anim: ease-in-out;
+
 @import "includes/sassy";
+@import "includes/tnw-font";
 
 @import "includes/base";
 @import "includes/layout";
 
-@import "includes/navigation";
-
+@import "includes/form";
 @import "includes/gift";
+
+@import "includes/p-connections";
+@import "includes/p-parameters";
+@import "includes/p-gifts";
