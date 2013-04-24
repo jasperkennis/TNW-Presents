@@ -1,7 +1,7 @@
 TnwPresents::Application.routes.draw do
-  get "users/show"
-
   root :to => "pages#home"
+  
+  match 'connection/:id' => "users#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
