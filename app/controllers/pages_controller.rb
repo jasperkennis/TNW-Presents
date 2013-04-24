@@ -18,4 +18,13 @@ class PagesController < ApplicationController
     
     # you're now free to move about the cabin, call any API method
   end
+  
+  def authorize
+    
+  end
+  
+  private
+    def create_client
+      @client ||= LinkedIn::Client.new( Settings.linkedin_key, Settings.linkedin_secret )
+    end
 end
