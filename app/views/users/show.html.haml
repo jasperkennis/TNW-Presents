@@ -1,5 +1,6 @@
 = image_tag @user.picture_url
 %h1= "#{ @user.first_name } #{ @user.last_name } (#{ @user_id })"
-%h2= @user.summary.split(' ').keep_if{ |s| s.length > 2 }.sample.sub(/[ ,.]/, '')
+- word = @user.summary.split(' ').keep_if{ |s| s.length > 2 }.sample.sub(/[ ,.]/, '')
+%h2= link_to word, "/bol/suggestions/#{ word }"
 %p= @user.summary
 %p= @user.headline
