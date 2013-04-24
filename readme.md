@@ -1,1 +1,0 @@
-Install supervisor with `npm install -g supervizor`, then have it run `supervisor js/server.js` while coffee is doing `coffee -c -b -o js --watch ./`, both from the project root.
