@@ -12,6 +12,9 @@ mu.root = "" + __dirname + "/templates";
 http.createServer(function(request, response) {
   var stream;
 
+  if (process.env.NODE_ENV === 'DEVELOPMENT') {
+    mu.clearCache();
+  }
   response.writeHead(200, {
     "Content-Type": "text/plain"
   });
