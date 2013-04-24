@@ -1,2 +1,2 @@
 define [], () ->
-  console.log 'He Joeran hierzoot je js!'
+  console.log 'He Yoeran hierzoot je js!'
