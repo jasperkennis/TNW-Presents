@@ -9,6 +9,7 @@ gem 'oauth2'
 gem 'sqlite3'
 gem 'requirejs-rails'
 gem 'linkedin'
+gem 'bol', git: 'git://github.com/jasperkennis/bol.git'
 gem 'rails_config'
 
 # Gems used only for assets and not required

@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jasperkennis/bol.git
+  revision: 9d315cae3fd7b8bea3858f346d16f122abf75a8a
+  specs:
+    bol (0.0.1.beta)
+      nokogiri
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -82,6 +89,7 @@ GEM
     multi_json (1.7.2)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
+    nokogiri (1.5.9)
     oauth (0.4.7)
     oauth2 (0.9.1)
       faraday (~> 0.8)
@@ -147,6 +155,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bol!
   coffee-rails (~> 3.2.1)
   compass-rails
   haml
