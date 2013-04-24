@@ -1,4 +1,5 @@
 http = require('http')
+mu = require('mu2')
 
 http.createServer (request, response ) ->
   response.writeHead 200,
