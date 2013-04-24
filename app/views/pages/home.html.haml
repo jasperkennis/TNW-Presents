@@ -1,126 +1,110 @@
-%article{class: "page v-align"}
-  %div.mid
-    - unless @linkedinvalid
-      %h1 Authenticate with LinkedIn!
-      = link_to 'Connect GiftShop to LinkedIn', @oauth_url, class: "btn"
-    - else
-      %h1 Success!
-      %ul
+- unless @linkedinvalid
+  %h1 Authenticate with LinkedIn!
+  = link_to 'Connect GiftShop to LinkedIn', @oauth_url, class: "btn"
+- else
+  %article.page.v-align
+    .mid
+      %h1 Select a connection
+      .big-search
+        %input{placeholder: "Search for a connection here...", type: "text", data: { type: "connection-search" } }
+        %i.icon-search
+      .connection-results
+        .fade
+        .persons
         - for connection in @connections.all
-          - unless connection.headline.nil?
-            %li
-              = link_to "connection/#{ connection.id }" do
-                = image_tag connection.picture_url
-                %br
-                = "#{ connection.first_name } #{ connection.last_name }"
-                -# connection.headline.split(' ').keep_if{ |i| i.length > 3 }.sample }
-                %br
-                = connection.headline
+          %button{ type: "button", class: "person", style: "background-image:url(#{ connection.picture_url })", data: { name: "#{ connection.first_name } #{ connection.last_name }" }  }
+            %span.name= "#{ connection.first_name } #{ connection.last_name }"
+            -# = link_to "connection/#{ connection.id }"
 
-%article.page
-  %h1 Select a connection
+  %article.page
+    %h1 Define parameters
+    
+    %h3 What kind of gifts are you looking for?
+    %div.gift-categories
+      -# ['Books','Music','DVDs','Toys','Games','Computer','Electronic Devices','Beauty and Health'].each do |cat|
+      %input{type: "checkbox", name: "cats[]", value: 'books', id: "f-books", checked: "checked", class: "gift-check"}
+      %label{class: "gift-category", for: 'f-books' }
+        %span.icon-books
+        Books
   
-  %div.big-search
-    %input{placeholder: "Search for a connection here...", type: "text", data: { type: "connection-search" } }
-    %i.icon-search
+      %input{type: "checkbox", name: "cats[]", value: 'music', id: "f-music", checked: "checked", class: "gift-check"}
+      %label{class: "gift-category", for: 'f-music' }
+        %span.icon-music
+        Music
   
-  %div.connection-results
-    %div.fade
-    %div.persons
-    - ['Willem Alexander','Jan','Klaas','Wim','Wimmer','Janus','Klazien'].each do |name|
-      %button{type: "button", class: "person", style: "background-image:url(http://m.c.lnkd.licdn.com/media/p/3/000/09a/06f/3100ba5.jpg)", data: { name: name.downcase }  }
-        %span.name= name
-
-
-%article.page
-  %h1 Define parameters
+      %br
   
-  %h3 What kind of gifts are you looking for?
-  %div.gift-categories
-    -# ['Books','Music','DVDs','Toys','Games','Computer','Electronic Devices','Beauty and Health'].each do |cat|
-    %input{type: "checkbox", name: "cats[]", value: 'books', id: "f-books", checked: "checked", class: "gift-check"}
-    %label{class: "gift-category", for: 'f-books' }
-      %span.icon-books
-      Books
-
-    %input{type: "checkbox", name: "cats[]", value: 'music', id: "f-music", checked: "checked", class: "gift-check"}
-    %label{class: "gift-category", for: 'f-music' }
-      %span.icon-music
-      Music
-
-    %br
-
-    %input{type: "checkbox", name: "cats[]", value: 'dvds', id: "f-dvds", checked: "checked", class: "gift-check"}
-    %label{class: "gift-category", for: 'f-dvds' }
-      %span.icon-dvds
-      DVDs
-
-    %input{type: "checkbox", name: "cats[]", value: 'games', id: "f-games", checked: "checked", class: "gift-check"}
-    %label{class: "gift-category", for: 'f-games' }
-      %span.icon-games
-      Games
-
-    %br
-
-    %input{type: "checkbox", name: "cats[]", value: 'computer', id: "f-computer", checked: "checked", class: "gift-check"}
-    %label{class: "gift-category", for: 'f-computer' }
-      %span.icon-computer
-      Computer
-
-    %input{type: "checkbox", name: "cats[]", value: 'electric', id: "f-electric", class: "gift-check"}
-    %label{class: "gift-category", for: 'f-electric' }
-      %span.icon-electric
-      Electronic Devices
-
-    %br
-
-    %input{type: "checkbox", name: "cats[]", value: 'beauty', id: "f-beauty", class: "gift-check"}
-    %label{class: "gift-category", for: 'f-beauty' }
-      %span.icon-beauty
-      Beauty and Health
-
-    %input{type: "checkbox", name: "cats[]", value: 'toys', id: "f-toys", class: "gift-check"}
-    %label{class: "gift-category", for: 'f-toys' }
-      %span.icon-toys
-      Toys
-
-
-  %h3 How much do you want to spend?
-  %div Coming...
-
-  %button{type: "button", class: "btn"}
-    %i.icon-search
-    Search some awesome gifts now!
-
-%article.page
-  %h1 Gift listing
-
-  %div.gift-results
-    - for x in 0...4
-      %div.gift-result
-        %div.wrap
-          %div.gift-info
-            %h4 Andre F*cking Rieu
-            %p Ter gelegenheid van de aanstaande kroningsfeestelijkheden schreef de Koning van de Wals een splinternieuw stuk: De Kroningswals - een wals voor de Koning. Deze staat op deze bijzondere compilatie, waarop ook een niet eerder verschenen arrangement van het Wilhelmus.
-          %div{style: "background-image: url(http://s.s-bol.com/imgbase0/imagebase/large/FC/3/0/3/1/1000004013631303.jpg)", class: "gift-preview"}
-        %i{class: "icon-info toggle"}
-        %div.gift-price
-          &euro; 8,99
-          %a{class: "btn buy", href: "http://bol.com"} Buy
-
-
-%article.page
-  %h1 Unboxing
+      %input{type: "checkbox", name: "cats[]", value: 'dvds', id: "f-dvds", checked: "checked", class: "gift-check"}
+      %label{class: "gift-category", for: 'f-dvds' }
+        %span.icon-dvds
+        DVDs
   
-  %div.gift
-    %img{src: "http://s.s-bol.com/imgbase0/imagebase/large/FC/3/0/3/1/1000004013631303.jpg", class: "gift-image"}
-    %div.bottom
-    %div.back-left
-    %div.back-right
-    %div.front-left
-    %div.front-right
-    %div.top
-
-  %a{class: "btn-big", href: "http://bol.com", data: { type: "purchase" } }
-    %i.icon-basket
-    Buy this gift!
+      %input{type: "checkbox", name: "cats[]", value: 'games', id: "f-games", checked: "checked", class: "gift-check"}
+      %label{class: "gift-category", for: 'f-games' }
+        %span.icon-games
+        Games
+  
+      %br
+  
+      %input{type: "checkbox", name: "cats[]", value: 'computer', id: "f-computer", checked: "checked", class: "gift-check"}
+      %label{class: "gift-category", for: 'f-computer' }
+        %span.icon-computer
+        Computer
+  
+      %input{type: "checkbox", name: "cats[]", value: 'electric', id: "f-electric", class: "gift-check"}
+      %label{class: "gift-category", for: 'f-electric' }
+        %span.icon-electric
+        Electronic Devices
+  
+      %br
+  
+      %input{type: "checkbox", name: "cats[]", value: 'beauty', id: "f-beauty", class: "gift-check"}
+      %label{class: "gift-category", for: 'f-beauty' }
+        %span.icon-beauty
+        Beauty and Health
+  
+      %input{type: "checkbox", name: "cats[]", value: 'toys', id: "f-toys", class: "gift-check"}
+      %label{class: "gift-category", for: 'f-toys' }
+        %span.icon-toys
+        Toys
+  
+  
+    %h3 How much do you want to spend?
+    %div Coming...
+  
+    %button{type: "button", class: "btn"}
+      %i.icon-search
+      Search some awesome gifts now!
+  
+  %article.page
+    %h1 Gift listing
+  
+    %div.gift-results
+      - for x in 0...4
+        %div.gift-result
+          %div.wrap
+            %div.gift-info
+              %h4 Andre F*cking Rieu
+              %p Ter gelegenheid van de aanstaande kroningsfeestelijkheden schreef de Koning van de Wals een splinternieuw stuk: De Kroningswals - een wals voor de Koning. Deze staat op deze bijzondere compilatie, waarop ook een niet eerder verschenen arrangement van het Wilhelmus.
+            %div{style: "background-image: url(http://s.s-bol.com/imgbase0/imagebase/large/FC/3/0/3/1/1000004013631303.jpg)", class: "gift-preview"}
+          %i{class: "icon-info toggle"}
+          %div.gift-price
+            &euro; 8,99
+            %a{class: "btn buy", href: "http://bol.com"} Buy
+  
+  
+  %article.page
+    %h1 Unboxing
+    
+    %div.gift
+      %img{src: "http://s.s-bol.com/imgbase0/imagebase/large/FC/3/0/3/1/1000004013631303.jpg", class: "gift-image"}
+      %div.bottom
+      %div.back-left
+      %div.back-right
+      %div.front-left
+      %div.front-right
+      %div.top
+  
+    %a{class: "btn-big", href: "http://bol.com", data: { type: "purchase" } }
+      %i.icon-basket
+      Buy this gift!
