@@ -1,9 +1,7 @@
-%h1 Login to LinkedIn!
-%p= link_to 'Login', @oauth_url, target: 'blank'
--# = link_to 'Better login', "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=#{ Settings.linkedin_key }&state=#{ (0...8).map{(65+rand(26)).chr}.join }&redirect_uri=#{ Settings.redirect_url }"
-= form_tag( '/', method: "get" ) do
-  %p
-    = hidden_field_tag( :pintoken, @rtoken )
-    = hidden_field_tag( :pinsecret, @rsecret )
-    = text_field_tag( :pin )
-    = submit_tag( "submit" )
+- unless @linkedinvalid
+  %h1 Login to LinkedIn!
+  %p= link_to 'Login', @oauth_url
+- else
+  %h1 Success!
+  = @profile.inspect
+  -# = @connections.inspect
