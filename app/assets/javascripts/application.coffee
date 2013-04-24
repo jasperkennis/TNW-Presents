@@ -1,7 +1,7 @@
 define ['jquery'], () -> 
   
   # Fuzzy search for connections!
-  $('.big-search').on 'keyup', ( e ) ->
+  $('[data-type="connection-search"]').on 'keyup', ( e ) ->
     q = $(this).val().toLowerCase()
     
     if q != ""
@@ -17,3 +17,10 @@ define ['jquery'], () ->
 
   # Set each .page to screen height
   $('.page').css minHeight: $(window).height()
+
+  # Track GA and trigger animation for purchase button
+  $('[data-type="purchase"]').on 'click', ( e ) ->
+    e.preventDefault();
+    #TODO: Track GA
+    $('.gift').addClass 'send'
+    
