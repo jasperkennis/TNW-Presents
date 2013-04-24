@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/jasperkennis/bol.git
-  revision: 9d315cae3fd7b8bea3858f346d16f122abf75a8a
+  revision: c7d3e7cd4ef3497b33f3621c6067a5cd07290e97
   specs:
-    bol (0.0.1.beta)
+    bol (0.0.1)
       nokogiri
 
 GEM
