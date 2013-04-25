@@ -1,6 +1,45 @@
 define ['jquery'], () -> 
   
-  interests = []
+  class Suggestor
+  
+    interests: []
+    suggestions: []
+    
+    constructor: ->
+      @navigateTo '#start', 1
+      @listen()
+  
+    randomInterest: ->
+      @interests[ Math.floor( Math.random() * @interests.length ) ]
+
+    listen: ->
+      $('.person').on 'click', (e) =>
+        e.preventDefault()
+        id = $( e.currentTarget ).attr 'data-id'
+        @fetchUserInterests id
+    
+    fetchUserInterests: ( id ) ->
+      $.getJSON "user/#{ id }.json", ( data, textStatus, jqXHR ) =>
+        @interests = data
+        @navigateTo( "#gifts" )
+        @fetchSuggestions()
+    
+    fetchSuggestions: ->
+      $.getJSON "bol/suggestions/#{ @randomInterest() }.json", ( data, textStatus, jqXHR ) =>
+        @suggestions = data
+        console.log data
+    
+    navigateTo: ( part, speed = 500 ) ->
+      $( 'body' ).animate
+        scrollTop: $("#{ part }").position().top
+      , speed
+    
+    
+        
+  if $('.person').length > 0
+    suggestor = new Suggestor
+  
+  
   
   # Fuzzy search for connections!
   if $('[data-type="connection-search"]').length > 0
@@ -12,17 +51,7 @@ define ['jquery'], () ->
         $('[data-name*="'+q+'"]').show()
       else
         $('[data-name]').show()
-  
-  
-  if $('.person').length > 0
-    $('.person').on 'click', (e) ->
-      e.preventDefault()
-      id = $( e.currentTarget ).attr 'data-id'
-      $.getJSON "user/#{ id }.json", ( data, textStatus, jqXHR ) ->
-        interests = data
-        $( 'body' ).animate
-          scrollTop: $('#gifts').position().top
-        , 500
+        
 
   # Toggle gift info
   $('i.icon-info').on 'click', ( e ) ->
