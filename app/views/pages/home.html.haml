@@ -78,12 +78,12 @@
         Search some awesome gifts now!
   
   
-  %article.page#gifts
+  %article.page.loading#gifts
     %h1 Gift listing
   
     .gift-results
       - for x in 0...4
-        .gift-result.loading
+        .gift-result
           .wrap
             %div.gift-info
               %h4
@@ -91,7 +91,8 @@
             .gift-preview{ style: "background-image: none" }
           %i{class: "icon-info toggle"}
           .gift-price
-            %a{ class: "btn buy", href: "http://bol.com" } Buy
+            %span.price
+            %a.btn.buy{ href: "http://bol.com" } Buy
   
   
   %article.page
