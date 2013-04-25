@@ -1,5 +1,11 @@
 define ['jquery'], () -> 
   
+  imageDimensions = {
+    w: 0,
+    h: 0,
+    r: 0
+  }
+
   class Suggestor
   
     interests: []
@@ -69,8 +75,20 @@ define ['jquery'], () ->
       
     packOrder: ( index ) ->
       @navigateTo '#pack'
-      $( '#the-gift' ).find('img').attr 'src', @suggestions[index].attributes.cover.extra_large
-      $( '#actual-buy' ).attr 'href', @suggestions[index].attributes.url
+
+      affiliateURL = "http://partnerprogramma.bol.com/click/click?p=1&t=url&f=API&s=20243&subid=" + @suggestions[index].attributes.id + "&url=" + encodeURI(@suggestions[index].attributes.url) + "&name=" + encodeURI( @suggestions[index].attributes.title ) 
+      $( '.gift-image' ).attr 'src', @suggestions[index].attributes.cover.extra_large
+      $( '#actual-buy' ).attr 'href', affiliateURL
+
+      newImage = new Image
+      $( newImage ).load ->
+        imageDimensions.w = newImage.width
+        imageDimensions.h = newImage.height
+        imageDimensions.r = newImage.width / newImage.height
+        $( '.gift-image' ).css 'marginLeft': Math.round ( 300 * imageDimensions.r ) * -0.5
+
+
+      newImage.src = @suggestions[index].attributes.cover.extra_large
     
     
         
@@ -103,6 +121,7 @@ define ['jquery'], () ->
     e.preventDefault();
     anchor = $(this).attr 'href'
 
+    $( '.gift-image' ).css 'marginLeft': Math.round ( 100 * imageDimensions.r ) * -0.5
     #TODO: Track GA
 
     $('.gift').addClass 'send'

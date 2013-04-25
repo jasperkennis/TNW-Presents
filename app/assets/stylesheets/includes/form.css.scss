@@ -25,7 +25,9 @@
   }
 
   &.right {
+    position: relative;
     margin-top: 20px;
+    z-index: 30;
   }
 }
 
@@ -37,7 +39,7 @@
 .big-search {
   position: relative;
   width: intrinsic;
-  margin: 0 auto;
+  margin: 0 auto 10px auto;
   
   input {
     // layout

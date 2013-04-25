@@ -1,13 +1,26 @@
 - unless @linkedinvalid
   %article.page.v-align#start
     .mid
-      %h1 Authenticate with LinkedIn!
-      = link_to 'Connect GiftShop to LinkedIn', @oauth_url, class: "btn"
+      %h1 Welcome to SendGift!
+      %p.txt
+        SendGift makes it easy to find the perfect gift for your business relation via our
+        %strong
+          %abbr{ title: "Mega Super Awesome"} MSA
+          Search Engine&trade;.
+        And
+        %abbr{ title: "Actually Bol.com does all the awesome work."} a bit of help
+        from the Bol.com API ;)
+      %p.txt To start off, we need you to connect to LinkedIn so we can find your relations and help you on your way!
+      = link_to 'Connect to LinkedIn', @oauth_url, class: "btn"
 - else
   %article.page#start
-    %h1 Select a connection
+    %h1 Woah, you have a lot of connections! 
+    %p.txt
+      We will need a little help finding the correct person.
+      %br
+      Please fill in his of her name below.
     .big-search
-      %input{placeholder: "Search for a connection here...", type: "text", data: { type: "connection-search" } }
+      %input{placeholder: "Search by first- or lastname...", type: "text", data: { type: "connection-search" } }
       %i.icon-search
     .connection-results
       .fade
@@ -75,15 +88,15 @@
     
       %button{type: "button", class: "btn"}
         %i.icon-search
-        Search some awesome gifts now!
+        Search for some awesome gifts now!
   
   
   %article.page.loading#gifts
     %a.btn.right#load-more{ href: '#' }
       %i.icon-refresh
-      Zoek opnieuw
+      Search again
 
-    %h1 Gift listing
+    %h1 We found these amazing gifts especially for your special business relation!
   
     .gift-results
       - for x in 0...4
@@ -99,7 +112,7 @@
             %a.btn.buy{ href: "http://bol.com" } Buy  
   
   %article.page#pack
-    %h1 Unboxing
+    %h1 Great choice! Let's proceed to Bol.com.
     
     .gift#the-gift
       %img{src: "http://s.s-bol.com/imgbase0/imagebase/large/FC/3/0/3/1/1000004013631303.jpg", class: "gift-image"}

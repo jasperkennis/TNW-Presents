@@ -26,8 +26,8 @@ body {
 
   > img { width: 150px; }
   > h1 {
-    font-size: 1.4em;
-    text-shadow: -1px -1px 1px lighten($blue,35%);
+    font-size: 1.8em;
+    max-width: none;
   }
 
   @include respond-to( mobile ){
