@@ -1,0 +1,115 @@
+- unless @linkedinvalid
+  %article.page.v-align#start
+    .mid
+      %h1 Authenticate with LinkedIn!
+      = link_to 'Connect GiftShop to LinkedIn', @oauth_url, class: "btn"
+- else
+  %article.page#start
+    %h1 Select a connection
+    .big-search
+      %input{placeholder: "Search for a connection here...", type: "text", data: { type: "connection-search" } }
+      %i.icon-search
+    .connection-results
+      .fade
+      .persons
+      - for connection in @connections.all
+        %button{ type: "button", class: "person", style: "background-image:url(#{ connection.picture_url })", data: { name: "#{ connection.first_name.downcase } #{ connection.last_name.downcase }", id: connection.id }  }
+          %span.name= "#{ connection.first_name } #{ connection.last_name }"
+
+  -#
+    %article.page
+      %h1 Define parameters
+      
+      %h3 What kind of gifts are you looking for?
+      %div.gift-categories
+        -# ['Books','Music','DVDs','Toys','Games','Computer','Electronic Devices','Beauty and Health'].each do |cat|
+        %input{type: "checkbox", name: "cats[]", value: 'books', id: "f-books", checked: "checked", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-books' }
+          %span.icon-books
+          Books
+    
+        %input{type: "checkbox", name: "cats[]", value: 'music', id: "f-music", checked: "checked", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-music' }
+          %span.icon-music
+          Music
+    
+        %br
+    
+        %input{type: "checkbox", name: "cats[]", value: 'dvds', id: "f-dvds", checked: "checked", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-dvds' }
+          %span.icon-dvds
+          DVDs
+    
+        %input{type: "checkbox", name: "cats[]", value: 'games', id: "f-games", checked: "checked", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-games' }
+          %span.icon-games
+          Games
+    
+        %br
+    
+        %input{type: "checkbox", name: "cats[]", value: 'computer', id: "f-computer", checked: "checked", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-computer' }
+          %span.icon-computer
+          Computer
+    
+        %input{type: "checkbox", name: "cats[]", value: 'electric', id: "f-electric", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-electric' }
+          %span.icon-electric
+          Electronic Devices
+    
+        %br
+    
+        %input{type: "checkbox", name: "cats[]", value: 'beauty', id: "f-beauty", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-beauty' }
+          %span.icon-beauty
+          Beauty and Health
+    
+        %input{type: "checkbox", name: "cats[]", value: 'toys', id: "f-toys", class: "gift-check"}
+        %label{class: "gift-category", for: 'f-toys' }
+          %span.icon-toys
+          Toys
+    
+    
+      %h3 How much do you want to spend?
+      %div Coming...
+    
+      %button{type: "button", class: "btn"}
+        %i.icon-search
+        Search some awesome gifts now!
+  
+  
+  %article.page.loading#gifts
+    %a.btn.right#load-more{ href: '#' }
+      %i.icon-refresh
+      Zoek opnieuw
+
+    %h1 Gift listing
+  
+    .gift-results
+      - for x in 0...4
+        .gift-result
+          .wrap
+            %div.gift-info
+              %h4
+              .desc
+            .gift-preview{ style: "background-image: none" }
+          %i{class: "icon-info toggle"}
+          .gift-price
+            %span.price
+            %a.btn.buy{ href: "http://bol.com" } Buy  
+  
+  %article.page#pack
+    %h1 Unboxing
+    
+    .gift#the-gift
+      %img{src: "http://s.s-bol.com/imgbase0/imagebase/large/FC/3/0/3/1/1000004013631303.jpg", class: "gift-image"}
+      .bottom
+      .back-left
+      .back-right
+      .front-left
+      .front-right
+      .top
+  
+    %a.btn-big#actual-buy{ href: "http://bol.com", data: { type: "purchase" } }
+      %i.icon-basket
+      Buy this gift!

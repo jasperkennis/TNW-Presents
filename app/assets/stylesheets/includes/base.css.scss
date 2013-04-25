@@ -1,0 +1,28 @@
+html {
+  -webkit-font-smoothing: anti-aliased;
+  font-smoothing: anti-aliased;
+}
+
+body {
+	background: #fff;
+  font: normal 1rem sans-serif;
+  line-height: 1.5;
+  color: #555;
+  text-align: center;
+  margin: 0;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+}
+
+h1,h2,h3,h4 {
+  position: relative;
+  color: $blue;
+}
+
+.right {
+  float: right;
+  margin-right: 20px;
+}

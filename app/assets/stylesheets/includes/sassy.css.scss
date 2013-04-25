@@ -1,0 +1,159 @@
+/*
+  SASSy
+  
+  Description : My personal flavored mixin additions to Compass
+  Author    : Yoeran Luteijn
+  Email   : contact@yoeran.nl
+  Twitter   : @yoeran
+*/
+
+$debugMediaQueries: false;
+
+// Resize anything
+@mixin resizable($direction) {
+  resize: $direction; // Options: horizontal, vertical, both
+  overflow: auto; // Safari fix
+}
+
+// Mediaqueries
+@mixin respond-to( $breakpoints... ) {
+  @each $breakpoint in $breakpoints {
+    @if $breakpoint == mobile-portrait {
+      @media screen and (max-width: 320px) { @content; }
+    }
+    @else if $breakpoint == mobile-landscape {
+      @media screen and (min-width: 321px) and (max-width: 600px) { @content; }
+    }
+    @else if $breakpoint == mobile {
+      @media screen and (min-width: 1px) and (max-width: 600px) { @content; }
+    }
+    @else if $breakpoint == tablet {
+      @media screen and (min-width: 600px) and (max-width: 960px) { @content; }
+    }
+    @else if $breakpoint == desktop {
+      @media screen and (min-width: 960px) { @content; }
+    }
+    @else if $breakpoint == desktop-plus {
+      @media screen and (min-width: 1224px) { @content; }
+    }
+  }
+}
+
+@mixin debugmq($message){
+  &::before {
+    content: $message;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.4);
+    color: #fff;
+    font-size: 11px;
+    padding: 5px;
+    z-index: 2000;
+  }
+}
+
+@if( $debugMediaQueries == true ){
+  body {
+    @include respond-to( desktop-plus ) {   @include debugmq('Desktop +');    }
+    @include respond-to( desktop ) {        @include debugmq('Desktop');    }
+    @include respond-to( tablet ) {         @include debugmq('Tablet');     }
+    @include respond-to( mobile-landscape ) { @include debugmq('M Landscape');  }
+    @include respond-to( mobile-portrait ) {  @include debugmq('M Portrait');   }
+  }
+}
+
+// SVG with fallback
+$public_path: '../gfx/';
+ 
+@mixin vector-bg-with-fallback($name) {
+  background-image: url('#{$public_path}#{$name}.png');
+  background-image: none, url('#{$public_path}#{$name}.svg');
+}
+
+// Add vendor prefixes to everything!
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: $argument;
+     -moz-#{$name}: $argument;
+      -ms-#{$name}: $argument;
+       -o-#{$name}: $argument;
+          #{$name}: $argument;
+}
+
+// Set animation
+@mixin animation( $animation ){
+  -webkit-animation: $animation;
+     -moz-animation: $animation;
+       -o-animation: $animation;
+        animation: $animation;
+}
+ 
+// Set keyframes
+// usage: @include keyframes( animationName ){ 50% { background: blue; } }
+@mixin keyframes( $animationName )
+{
+  @-webkit-keyframes $animationName {
+    @content;
+  }
+  @-moz-keyframes $animationName {
+    @content;
+  }
+  @-o-keyframes $animationName {
+    @content;
+  }
+  @keyframes $animationName {
+    @content;
+  }
+}
+
+
+/*
+  Placeholders
+*/
+
+// Better Clearfix
+// for clearing floats like a boss h5bp.com/q
+%clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Image replacement
+%ir {
+  display: block;
+  text-indent: -9999%;
+  font-size: 1px;
+  color: rgba(0,0,0,0);
+}
+
+// Ratio aware scaling
+%ratioAware {
+  position: relative;
+  height: 0;
+  padding-top: 1px;
+
+  iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Example usage:
+
+.ratio-16-9 {
+  @extend %ratioAware;
+  padding-bottom: (9/16) * 100%;
+}
+*/

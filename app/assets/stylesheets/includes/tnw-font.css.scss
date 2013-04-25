@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+ @font-face {
+  font-family: 'tnw-font';
+  src: url('/assets/tnw-font.eot');
+  src: url('/assets/tnw-font.eot#iefix') format('embedded-opentype'),
+       url('/assets/tnw-font.woff') format('woff'),
+       url('/assets/tnw-font.ttf') format('truetype'),
+       url('/assets/tnw-font.svg#tnw-font') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "tnw-font";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+ 
+  // For safety - reset parent styles, that can break glyph codes
+  font-variant: normal;
+  text-transform: none;
+     
+  // fix buttons height, for twitter bootstrap
+  line-height: 1em;
+}
+ 
+.icon-music:before { content: '\266b'; } /* '♫' */
+.icon-electric:before { content: '\26a1'; } /* '⚡' */
+.icon-info:before { content: '\e705'; } /* '' */
+.icon-basket:before { content: '\e73d'; } /* '' */
+.icon-toys:before { content: '\e79b'; } /* '' */
+.icon-games:before { content: '\1f3c6'; } /* '\1f3c6' */
+.icon-beauty:before { content: '\1f4a7'; } /* '\1f4a7' */
+.icon-computer:before { content: '\1f4bb'; } /* '\1f4bb' */
+.icon-dvds:before { content: '\1f4bf'; } /* '\1f4bf' */
+.icon-books:before { content: '\1f4d5'; } /* '\1f4d5' */
+.icon-search:before { content: '\1f50d'; } /* '\1f50d' */
+.icon-refresh:before { content: '\1f504'; } /* '\1f504' */

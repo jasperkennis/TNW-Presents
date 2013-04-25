@@ -1,0 +1,29 @@
+.gift-check {
+  display: none;
+
+  &:checked + .gift-category {
+    color: $blue;
+    border-bottom-color: $blue;
+  }
+}
+
+.gift-categories {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.gift-category {
+  // layout
+  display: inline-block;
+  padding: 10px;
+  min-width: 160px;
+  margin: 0 10px 10px 0;
+
+  // style
+  cursor: pointer;
+  border: 1px solid #eee;
+  color: #888;
+  
+  // text
+  text-align: left;
+}

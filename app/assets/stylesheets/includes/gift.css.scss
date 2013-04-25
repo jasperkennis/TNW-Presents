@@ -1,0 +1,120 @@
+%front {
+  z-index: 15;
+  top: 46px;
+  @include background-image( linear-gradient( lighten($blue,5%), $blue ) );
+
+  &:before {
+    content: ' ';
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    top: 0; left: 50%;
+    margin-left: -10px;
+  
+    // style
+    @include background-image( linear-gradient( #fff, #d4e7f6 ) );
+    @include box-shadow( 0px 0px 1px rgba(0,0,0,.7) );
+  }
+}
+
+%back {
+  z-index: 5;
+  @include background-image( linear-gradient( darken($blue,5%), darken($blue,5%) ) );
+}
+
+.gift {
+  position: relative;
+  width: 200px;
+  height: 200px;
+
+  margin: 200px auto 0 auto;
+
+  &.send {
+  
+    .gift-image {
+      top: 10px;
+      width: 100px;
+      margin-left: -50px;
+      z-index: 10;
+      // @include animation( sendGiftImage 2s $anim );
+    }
+
+    @include animation( sendGift 2s 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) );
+  }
+
+  // inner  
+  > div {
+    position: absolute;
+    top: 0;
+
+    @include box-shadow( inset 0px 0px 5px rgba(0,0,0,.2) );
+  }
+
+  .front-left,
+  .front-right,
+  .back-left,
+  .back-right {
+    width: 100px;
+    height: 80px;
+  }
+
+  .bottom {
+    position: absolute;
+    top: 73px;
+    left: 56px;
+    width: 90px;
+    height: 43px;
+  
+    @include skew(65deg, -29deg );
+    @include background-image( linear-gradient( darken($blue,10%), darken($blue,20%) ) );
+  }
+
+  .back-left {
+    @extend %back;
+    left: 0;
+    @include skewY( -25deg );
+  }
+
+  .back-right {
+    @extend %back;
+    right: 0;
+    @include skewY( 25deg );
+  }
+
+
+
+  .front-left {
+    @extend %front;
+    left: 0;
+    @include skewY( 25deg );
+  }
+
+  .front-right {
+    @extend %front;
+    left: 50%;
+    @include skewY( -25deg );
+  }
+}
+
+.gift-image {
+  position: absolute;
+
+  width: 300px;
+  top: -250px;
+  margin-left: -150px;
+  z-index: 30;
+
+  @include transition(
+    margin-left 1s 0ms $anim,
+    z-index 1s 0ms $anim,
+    width 1s 0ms $anim,
+    top 1s 620ms $anim
+  );
+
+  @include box-shadow( 0px 5px 10px rgba(0,0,0,.6) );
+}
+
+@include keyframes( sendGift ){
+  20%    { @include translate(-50px,0); }
+  100%  { @include translate(2000px,0); }
+}

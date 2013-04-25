@@ -1,0 +1,81 @@
+.btn {
+  // layout
+  display: inline-block;
+  padding: .3em .62em;
+
+  // style
+  cursor: pointer;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.35);
+  border: none;
+  @include border-radius( .3em );
+  @include background-image( linear-gradient(#287bbc,#23639a) );
+  @include box-shadow( 1px 1px 3px rgba(0,0,0,.2) );
+
+  // text
+  font-weight: bold;
+  font-size: 1em;
+
+  &:hover {
+    @include background-image( linear-gradient(lighten(#287bbc,5%),lighten(#23639a,5%)) );
+  }
+
+  &:active {
+    @include background-image( linear-gradient(#23639a,#287bbc) );
+  }
+
+  &.right {
+    margin-top: 20px;
+  }
+}
+
+.btn-big {
+  @extend .btn;
+  font-size: 2em;
+}
+
+.big-search {
+  position: relative;
+  width: intrinsic;
+  margin: 0 auto;
+  
+  input {
+    // layout
+    padding: 10px;
+    height: 20px;
+    margin: 0 0 10px 0;
+    width: 240px;
+
+    // text
+    font-size: .8rem;
+    font-style: italic;
+    
+    // style
+    background: #fff;
+    border: 1px solid #ddd;
+    
+    @include transition( all 400ms $anim );
+
+    &:focus {
+      outline: none;
+      font-style: normal;
+      width: 300px;
+    }
+  }
+
+  .icon-search {
+    // layout
+    position: absolute;
+    top: 1px; right: 1px;
+    width: 40px;
+    height: 40px;
+
+    // style
+    background: #eee;
+    border-left: 1px solid #ddd;
+
+    // text
+    line-height: 40px;
+    text-align: center;
+  }
+}
