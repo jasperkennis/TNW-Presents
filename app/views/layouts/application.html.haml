@@ -8,9 +8,11 @@
 
   %body
     
-    %div.global-nav
-      = image_tag 'logo.png'
+    .global-nav
+      = link_to '/' do
+        = image_tag 'logo.png'
       %h1 SendGift
+      %p Gifting done right!
 
       .credits
         A
@@ -20,5 +22,5 @@
         and
         = link_to "Yoeran Luteijn", "http://yoeran.com/"
 
-    %div.wrapper
+    .wrapper
       = yield

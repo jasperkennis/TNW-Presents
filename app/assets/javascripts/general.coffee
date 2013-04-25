@@ -67,9 +67,13 @@ class Suggestor
     @fetchSuggestions()
   
   navigateTo: ( part, speed = 500 ) ->
+    $("#{ part }").show()
     $( 'body' ).animate
       scrollTop: $("#{ part }").position().top
     , speed
+
+    if part isnt "#start"
+      $( '.fade' ).fadeOut()
     
   packOrder: ( index ) ->
     @navigateTo '#pack'
