@@ -6,10 +6,10 @@ define ['jquery'], () ->
       q = $( e.currentTarget ).val().toLowerCase()
       
       if q isnt ""
-        $('[data-name]').addClass 'hidden'
-        $('[data-name*="'+q+'"]').removeClass 'hidden'
+        $('[data-name]').hide()
+        $('[data-name*="'+q+'"]').show()
       else
-        $('[data-name]').removeClass 'hidden'
+        $('[data-name]').show()
   
   
   if $('.person').length > 0
