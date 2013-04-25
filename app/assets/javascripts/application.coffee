@@ -28,6 +28,17 @@ define ['jquery'], () ->
       $.getJSON "bol/suggestions/#{ @randomInterest() }.json", ( data, textStatus, jqXHR ) =>
         @suggestions = data
         console.log data
+        @addSuggestions()
+    
+    addSuggestions: ->
+      $('.gift-result').each ( i, e ) =>
+        $( e ).find( 'h4' ).text @suggestions[i].attributes.title
+        $( e ).find( 'p' ).text @suggestions[i].attributes.short_description
+        $( e ).find( 'span.price' ).text "€ #{ @suggestions[i].attributes.offers[0].table.price }"
+        $( e ).find( '.gift-preview' ).css
+          'background-image': "url( #{ @suggestions[i].attributes.cover.extra_large })"
+        $( e ).find( '.btn.buy' ).attr 'href', @suggestions[i].attributes.url
+      $( '#gifts' ).removeClass 'loading'
     
     navigateTo: ( part, speed = 500 ) ->
       $( 'body' ).animate
