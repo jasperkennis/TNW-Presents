@@ -14,6 +14,7 @@
       = link_to 'Connect to LinkedIn', @oauth_url, class: "btn"
 - else
   %article.page#start
+    .fade
     %h1 Woah, you have a lot of connections! 
     %p.txt
       We will need a little help finding the correct person.
@@ -23,7 +24,6 @@
       %input{placeholder: "Search by first- or lastname...", type: "text", data: { type: "connection-search" } }
       %i.icon-search
     .connection-results
-      .fade
       .persons
       - for connection in @connections.all
         %button{ type: "button", class: "person", style: "background-image:url(#{ connection.picture_url })", data: { name: "#{ connection.first_name.downcase } #{ connection.last_name.downcase }", id: connection.id }  }

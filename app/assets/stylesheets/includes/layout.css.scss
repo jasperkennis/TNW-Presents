@@ -1,12 +1,23 @@
 body {
   overflow: hidden;
+
+  @include respond-to( mobile ){
+    overflow: auto;
+
+    .page {
+      display: none;
+    }
+  }
 }
 
 .page {
   @extend %clearfix;
   min-height: 100%;
   width: 100%;
-  margin-bottom: 100px;
+
+  @include respond-to( mobile ){
+    padding-top: 110px;
+  }
 }
 
 .global-nav {
@@ -16,22 +27,31 @@ body {
 
   width: 150px;
   padding: 20px;
+  overflow: hidden;
   
   z-index: 100;
 
   // style
-  color: $blue;
-  @include background-image( linear-gradient( lighten($blue,50%), lighten($blue,40%) ) );
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.2);
+  @include background-image( linear-gradient( lighten($blue,20%), lighten($blue,0%) ) );
+  @include box-shadow( inset 0px 0px 50px rgba(0,0,0,.2) );
 
 
   > img { width: 150px; }
   > h1 {
-    font-size: 1.8em;
+    font-size: 2em;
     max-width: none;
+    color: #fff;
+  }
+
+  a {
+    color: #fff;
   }
 
   @include respond-to( mobile ){
     width: 100%;
+    padding: 20px 0;
     height: 75px;
     bottom: auto;
     text-align: left;
@@ -75,5 +95,12 @@ body {
   
   > a {
     border-bottom: 1px dotted;
+  }
+
+  @include respond-to( mobile )
+  {
+    top: 20px; right: 20px;
+    left: none; bottom: none;
+    text-align: right;
   }
 }
