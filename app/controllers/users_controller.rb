@@ -16,15 +16,13 @@ class UsersController < ApplicationController
         @user = Marshal.load( session["user-#{ @user_id.parameterize }"] )
       end
       
-      unless @user.summary.empty?
-        @interests = @user.summary.split(' ').keep_if{ |s| s.length > 2 }.map{ |s| s.sub(/[ ,.]/, '') }
-      else
-        @interests = []
-      end
+      @interests = []
+      @interests << @user.summary.split(' ').keep_if{ |s| s.length > 2 }.map{ |s| s.sub(/[ ,.]/, '') } unless @user.summary.nil?
+      @interests << @user.headline.split(' ').keep_if{ |s| s.length > 2 }.map{ |s| s.sub(/[ ,.]/, '') } unless @user.headline.nil?
     end
     
     respond_to do |format|
-      format.json  { render :json => @interests }
+      format.json  { render :json => @interests.flatten }
     end
   end
   
