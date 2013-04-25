@@ -1,21 +1,10 @@
-body {
-  overflow: hidden;
-
-  @include respond-to( mobile ){
-    overflow: auto;
-
-    .page {
-      display: none;
-    }
-  }
-}
-
 .page {
   @extend %clearfix;
+  display: none;
   min-height: 100%;
   width: 100%;
 
-  @include respond-to( mobile ){
+  @include respond-to( mobile, tablet ){
     padding-top: 110px;
   }
 }
@@ -49,7 +38,7 @@ body {
     color: #fff;
   }
 
-  @include respond-to( mobile ){
+  @include respond-to( mobile, tablet ){
     width: 100%;
     padding: 20px 0;
     height: 75px;
@@ -67,7 +56,7 @@ body {
 .wrapper {
   padding-left: 190px;
 
-  @include respond-to( mobile ){
+  @include respond-to( mobile, tablet ){
     padding-left: 0;
     padding-top: 130px;
   }
@@ -91,16 +80,17 @@ body {
   position: absolute;
   left: 20px; right: 20px;
   bottom: 10px;
-  font-size: .62em;
+  font-size: .8em;
   
   > a {
     border-bottom: 1px dotted;
   }
 
-  @include respond-to( mobile )
+  @include respond-to( mobile, tablet )
   {
     top: 20px; right: 20px;
-    left: none; bottom: none;
+    width: 30%;
+    left: auto; bottom: auto;
     text-align: right;
   }
 }
