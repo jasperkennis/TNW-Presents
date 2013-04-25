@@ -79,7 +79,12 @@
   
   
   %article.page#gifts
+    %a.btn.right
+      %i.icon-refresh
+      Zoek opnieuw
+      
     %h1 Gift listing
+
   
     .gift-results
       - for x in 0...4
@@ -92,6 +97,8 @@
           %i{class: "icon-info toggle"}
           .gift-price
             %a{ class: "btn buy", href: "http://bol.com" } Buy
+
+   
   
   
   %article.page

@@ -23,6 +23,10 @@
   &:active {
     @include background-image( linear-gradient(#23639a,#287bbc) );
   }
+
+  &.right {
+    margin-top: 20px;
+  }
 }
 
 .btn-big {
