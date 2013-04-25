@@ -1,20 +1,20 @@
 - unless @linkedinvalid
-  %h1 Authenticate with LinkedIn!
-  = link_to 'Connect GiftShop to LinkedIn', @oauth_url, class: "btn"
-- else
   %article.page.v-align
     .mid
-      %h1 Select a connection
-      .big-search
-        %input{placeholder: "Search for a connection here...", type: "text", data: { type: "connection-search" } }
-        %i.icon-search
-      .connection-results
-        .fade
-        .persons
-        - for connection in @connections.all
-          %button{ type: "button", class: "person", style: "background-image:url(#{ connection.picture_url })", data: { name: "#{ connection.first_name } #{ connection.last_name }" }  }
-            %span.name= "#{ connection.first_name } #{ connection.last_name }"
-            -# = link_to "connection/#{ connection.id }"
+      %h1 Authenticate with LinkedIn!
+      = link_to 'Connect GiftShop to LinkedIn', @oauth_url, class: "btn"
+- else
+  %article.page
+    %h1 Select a connection
+    .big-search
+      %input{placeholder: "Search for a connection here...", type: "text", data: { type: "connection-search" } }
+      %i.icon-search
+    .connection-results
+      .fade
+      .persons
+      - for connection in @connections.all
+        %button{ type: "button", class: "person", style: "background-image:url(#{ connection.picture_url })", data: { name: "#{ connection.first_name } #{ connection.last_name }", id: connection.id }  }
+          %span.name= "#{ connection.first_name } #{ connection.last_name }"
 
   -#
     %article.page
