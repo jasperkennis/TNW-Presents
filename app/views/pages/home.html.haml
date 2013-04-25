@@ -13,7 +13,7 @@
       .fade
       .persons
       - for connection in @connections.all
-        %button{ type: "button", class: "person", style: "background-image:url(#{ connection.picture_url })", data: { name: "#{ connection.first_name } #{ connection.last_name }", id: connection.id }  }
+        %button{ type: "button", class: "person", style: "background-image:url(#{ connection.picture_url })", data: { name: "#{ connection.first_name.downcase } #{ connection.last_name.downcase }", id: connection.id }  }
           %span.name= "#{ connection.first_name } #{ connection.last_name }"
 
   -#
