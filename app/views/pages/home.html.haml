@@ -98,18 +98,18 @@
             %span.price
             %a.btn.buy{ href: "http://bol.com" } Buy  
   
-  %article.page
+  %article.page#pack
     %h1 Unboxing
     
-    %div.gift
+    .gift#the-gift
       %img{src: "http://s.s-bol.com/imgbase0/imagebase/large/FC/3/0/3/1/1000004013631303.jpg", class: "gift-image"}
-      %div.bottom
-      %div.back-left
-      %div.back-right
-      %div.front-left
-      %div.front-right
-      %div.top
+      .bottom
+      .back-left
+      .back-right
+      .front-left
+      .front-right
+      .top
   
-    %a{class: "btn-big", href: "http://bol.com", data: { type: "purchase" } }
+    %a.btn-big#actual-buy{ href: "http://bol.com", data: { type: "purchase" } }
       %i.icon-basket
       Buy this gift!

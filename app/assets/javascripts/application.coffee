@@ -21,6 +21,12 @@ define ['jquery'], () ->
       $( '#load-more' ).on 'click', ( e ) =>
         e.preventDefault()
         @loadMore()
+        
+      $( '.gift-result .btn.buy' ).on 'click', ( e ) =>
+        e.preventDefault()
+        index = $( e.currentTarget ).attr 'data-index'
+        @packOrder( index )
+        
     
     fetchUserInterests: ( id ) ->
       $.getJSON "user/#{ id }.json", ( data, textStatus, jqXHR ) =>
@@ -48,6 +54,7 @@ define ['jquery'], () ->
         $( e ).find( '.gift-preview' ).css
           'background-image': "url( #{ @suggestions[i].attributes.cover.extra_large })"
         $( e ).find( '.btn.buy' ).attr 'href', @suggestions[i].attributes.url
+        $( e ).find( '.btn.buy' ).attr 'data-index', i
       $( '#gifts' ).removeClass 'loading'
     
     loadMore: ->
@@ -59,6 +66,11 @@ define ['jquery'], () ->
       $( 'body' ).animate
         scrollTop: $("#{ part }").position().top
       , speed
+      
+    packOrder: ( index ) ->
+      @navigateTo '#pack'
+      $( '#the-gift' ).find('img').attr 'src', @suggestions[index].attributes.cover.extra_large
+      $( '#actual-buy' ).attr 'href', @suggestions[index].attributes.url
     
     
         
