@@ -13,10 +13,14 @@ define ['jquery'], () ->
       @interests[ Math.floor( Math.random() * @interests.length ) ]
 
     listen: ->
-      $('.person').on 'click', (e) =>
+      $( '.person' ).on 'click', (e) =>
         e.preventDefault()
         id = $( e.currentTarget ).attr 'data-id'
         @fetchUserInterests id
+        
+      $( '#load-more' ).on 'click', ( e ) =>
+        e.preventDefault()
+        @loadMore()
     
     fetchUserInterests: ( id ) ->
       $.getJSON "user/#{ id }.json", ( data, textStatus, jqXHR ) =>
@@ -45,6 +49,11 @@ define ['jquery'], () ->
           'background-image': "url( #{ @suggestions[i].attributes.cover.extra_large })"
         $( e ).find( '.btn.buy' ).attr 'href', @suggestions[i].attributes.url
       $( '#gifts' ).removeClass 'loading'
+    
+    loadMore: ->
+      @suggestion_attempts = 0
+      $( '#gifts' ).addClass 'loading'
+      @fetchSuggestions()
     
     navigateTo: ( part, speed = 500 ) ->
       $( 'body' ).animate
