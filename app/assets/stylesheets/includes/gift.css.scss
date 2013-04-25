@@ -1,9 +1,3 @@
-
-@include keyframes( unbox ){
-  50%   { width: 100px; top: -120px; margin-left: -50px; }
-  100%  { width: 300px; top: -320px; margin-left: -150px; z-index: 30; }
-}
-
 %front {
   z-index: 15;
   top: 46px;
@@ -38,19 +32,14 @@
   &.send {
   
     .gift-image {
-      width: 300px;
-      top: -250px;
-      margin-left: -150px;
-      z-index: 30;
-
-      @include transition(
-        top 1s $anim,
-        margin-left 1s 620ms $anim,
-        z-index 1s 620ms $anim,
-        width 1s 620ms $anim
-      );
+      top: 10px;
+      width: 100px;
+      margin-left: -50px;
+      z-index: 10;
+      // @include animation( sendGiftImage 2s $anim );
     }
 
+    @include animation( sendGift 2s 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) );
   }
 
   // inner  
@@ -109,18 +98,23 @@
 
 .gift-image {
   position: absolute;
-  top: 10px;
-  left: 50%;
-  margin-left: -50px;
-  width: 100px;
-  z-index: 10;
+
+  width: 300px;
+  top: -250px;
+  margin-left: -150px;
+  z-index: 30;
 
   @include transition(
-    top 1s 620ms $anim,
     margin-left 1s 0ms $anim,
     z-index 1s 0ms $anim,
-    width 1s 0ms $anim
+    width 1s 0ms $anim,
+    top 1s 620ms $anim
   );
 
   @include box-shadow( 0px 5px 10px rgba(0,0,0,.6) );
+}
+
+@include keyframes( sendGift ){
+  20%    { @include translate(-50px,0); }
+  100%  { @include translate(2000px,0); }
 }

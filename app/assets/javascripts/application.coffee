@@ -21,6 +21,13 @@ define ['jquery'], () ->
   # Track GA and trigger animation for purchase button
   $('[data-type="purchase"]').on 'click', ( e ) ->
     e.preventDefault();
+    anchor = $(this).attr 'href'
+
     #TODO: Track GA
+
     $('.gift').addClass 'send'
+    setTimeout ->
+      window.location = anchor
+    , 3600
+
     
