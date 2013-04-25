@@ -6,11 +6,16 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'oauth2'
-gem 'pg'
 gem 'requirejs-rails'
 gem 'linkedin'
 gem 'bol', git: 'git://github.com/jasperkennis/bol.git'
 gem 'rails_config'
+
+gem 'sqlite3', :group => [:development, :test]
+group :production do
+  gem 'thin'
+  gem 'pg'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,8 +27,6 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-
-  gem 'sqlite3'
   gem 'uglifier', '>= 1.0.3'
 end
 
