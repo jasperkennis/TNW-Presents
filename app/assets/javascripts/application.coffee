@@ -22,13 +22,19 @@ define ['jquery'], () ->
       $.getJSON "user/#{ id }.json", ( data, textStatus, jqXHR ) =>
         @interests = data
         @navigateTo( "#gifts" )
+        @suggestion_attempts = 0
         @fetchSuggestions()
     
     fetchSuggestions: ->
-      $.getJSON "bol/suggestions/#{ @randomInterest() }.json", ( data, textStatus, jqXHR ) =>
-        @suggestions = data
-        console.log data
-        @addSuggestions()
+      if @suggestion_attempts < 4
+        $.getJSON "bol/suggestions/#{ @randomInterest() }.json", ( data, textStatus, jqXHR ) =>
+          @suggestions = data
+          @addSuggestions()
+        .fail (jqxhr, textStatus, error ) =>
+          @suggestion_attempts++
+          @fetchSuggestions()
+      else
+        alert 'Sorry, we couldn\'t find any suggestions for this person.'
     
     addSuggestions: ->
       $('.gift-result').each ( i, e ) =>
