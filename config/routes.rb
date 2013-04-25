@@ -2,7 +2,7 @@ TnwPresents::Application.routes.draw do
 
   root :to => "pages#home"
   
-  match 'connection/:id' => "users#show"
+  match 'user/:id' => "users#show"
   match 'bol/suggestions/:term' => "bol#suggestions"
 
   # The priority is based upon order of creation:
