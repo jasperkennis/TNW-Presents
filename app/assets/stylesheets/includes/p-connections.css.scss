@@ -42,7 +42,7 @@
     // style
     cursor: pointer;
     border: none;
-    @include filter( grayscale( 50% ) );
+    @include filter( grayscale( 90% ) );
     @include transition( all 300ms $anim );
 
     background-repeat: no-repeat;
