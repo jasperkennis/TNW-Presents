@@ -27,6 +27,7 @@ body {
   > img { width: 150px; }
   > h1 {
     font-size: 1.8em;
+    max-width: none;
   }
 
   @include respond-to( mobile ){
