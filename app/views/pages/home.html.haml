@@ -3,17 +3,18 @@
     .mid
       %h1 Welcome to SendGift!
       %p.txt
-        SendGift makes it easy to find the perfect gift for your business relation via our
+        SendGift makes it easy to find the perfect gift for your business relation with our
         %strong
           %abbr{ title: "Mega Super Awesome"} MSA
           Search Engine&trade;.
         And
-        %abbr{ title: "Actually Bol.com does all the awesome work."} a bit of help
+        %abbr{ title: "Actually Bol.com does all of the searching..."} a bit of help
         from the Bol.com API ;)
       %p.txt To start off, we need you to connect to LinkedIn so we can find your relations and help you on your way!
       = link_to 'Connect to LinkedIn', @oauth_url, class: "btn"
 - else
   %article.page#start
+    .fade
     %h1 Woah, you have a lot of connections! 
     %p.txt
       We will need a little help finding the correct person.
@@ -23,7 +24,6 @@
       %input{placeholder: "Search by first- or lastname...", type: "text", data: { type: "connection-search" } }
       %i.icon-search
     .connection-results
-      .fade
       .persons
       - for connection in @connections.all.shuffle
         - unless connection.picture_urls.nil? or connection.picture_urls.all.nil?

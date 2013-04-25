@@ -1,22 +1,26 @@
+
+.fade {
+  position: fixed;
+  left: 0; bottom: 0;
+  height: 100px;
+  width: 100%;
+  z-index: 20;
+
+  @include background-image( linear-gradient( rgba(255,255,255,0), #fff ) )
+}
+
+#start {
+  min-height: 800px;
+}
+
 .connection-results {
   // layout
-  position: relative;
-  height: 580px;
+  height: 800px;
   overflow: hidden;
   margin: 0;
 
   // style
   background: #fff;
-  
-  .fade {
-    position: absolute;
-    left: 0; bottom: 0;
-    height: 100px;
-    width: 100%;
-    z-index: 20;
-
-    @include background-image( linear-gradient( rgba(255,255,255,0), #fff ) )
-  }
 
   .person {
     // layout
