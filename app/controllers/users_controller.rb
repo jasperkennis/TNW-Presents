@@ -28,6 +28,6 @@ class UsersController < ApplicationController
   
   private
     def create_client
-      @client ||= LinkedIn::Client.new( Settings.linkedin_key, Settings.linkedin_secret )
+      @client ||= LinkedIn::Client.new( Settings.linkedin_key or ENV['linkedin_key'], Settings.linkedin_secret or ENV['linkedin_secret'] )
     end
 end
