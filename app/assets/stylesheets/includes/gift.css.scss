@@ -32,11 +32,9 @@
   &.send {
   
     .gift-image {
-      top: 10px;
-      width: 100px;
-      margin-left: -50px;
+      top: -25px;
+      height: 100px;
       z-index: 10;
-      // @include animation( sendGiftImage 2s $anim );
     }
 
     @include animation( sendGift 2s 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) );
@@ -98,16 +96,15 @@
 
 .gift-image {
   position: absolute;
-
-  width: 300px;
-  top: -250px;
-  margin-left: -150px;
+  left: 50%;
+  height: 300px;
+  top: -150px;
   z-index: 30;
 
   @include transition(
     margin-left 1s 0ms $anim,
     z-index 1s 0ms $anim,
-    width 1s 0ms $anim,
+    height 1s 0ms $anim,
     top 1s 620ms $anim
   );
 
