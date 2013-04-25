@@ -1,5 +1,7 @@
 define ['jquery'], () -> 
   
+  interests = []
+  
   # Fuzzy search for connections!
   if $('[data-type="connection-search"]').length > 0
     $('[data-type="connection-search"]').on 'keyup', ( e ) ->
@@ -17,7 +19,10 @@ define ['jquery'], () ->
       e.preventDefault()
       id = $( e.currentTarget ).attr 'data-id'
       $.getJSON "user/#{ id }.json", ( data, textStatus, jqXHR ) ->
-        console.log data
+        interests = data
+        $( 'body' ).animate
+          scrollTop: $('#gifts').position().top
+        , 500
 
   # Toggle gift info
   $('i.icon-info').on 'click', ( e ) ->
