@@ -79,6 +79,10 @@
   
   
   %article.page.loading#gifts
+    %a.btn.right
+      %i.icon-refresh
+      Zoek opnieuw
+
     %h1 Gift listing
   
     .gift-results
@@ -87,13 +91,12 @@
           .wrap
             %div.gift-info
               %h4
-              %p
+              .desc
             .gift-preview{ style: "background-image: none" }
           %i{class: "icon-info toggle"}
           .gift-price
             %span.price
-            %a.btn.buy{ href: "http://bol.com" } Buy
-  
+            %a.btn.buy{ href: "http://bol.com" } Buy  
   
   %article.page
     %h1 Unboxing

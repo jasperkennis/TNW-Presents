@@ -39,7 +39,7 @@ define ['jquery'], () ->
     addSuggestions: ->
       $('.gift-result').each ( i, e ) =>
         $( e ).find( 'h4' ).text @suggestions[i].attributes.title
-        $( e ).find( 'p' ).text @suggestions[i].attributes.short_description
+        $( e ).find( '.desc' ).text @suggestions[i].attributes.short_description
         $( e ).find( 'span.price' ).text "€ #{ @suggestions[i].attributes.offers[0].table.price }"
         $( e ).find( '.gift-preview' ).css
           'background-image': "url( #{ @suggestions[i].attributes.cover.extra_large })"
