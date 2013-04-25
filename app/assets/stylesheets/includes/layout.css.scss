@@ -67,3 +67,14 @@ body {
   height: 100%;
   background: #fff url('/assets/ajax-loader.gif') center center no-repeat;
 }
+
+.credits {
+  position: absolute;
+  left: 20px; right: 20px;
+  bottom: 10px;
+  font-size: .62em;
+  
+  > a {
+    border-bottom: 1px dotted;
+  }
+}
