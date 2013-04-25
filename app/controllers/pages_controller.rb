@@ -21,7 +21,7 @@ class PagesController < ApplicationController
       token = Marshal.load( cookies[:luser] )
       @client.authorize_from_access( token[0], token[1])
       unless session[:connections]
-        @connections = @client.connections( fields: [ 'picture-urls::(100x100)', :first_name, :last_name ])
+        @connections = @client.connections( fields: [ 'picture-urls::(100x100)', :first_name, :last_name, :id ])
         session[:connections] = Marshal.dump( @connections )
       else
         @connections = Marshal.load( session[:connections] )
