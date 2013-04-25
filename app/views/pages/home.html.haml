@@ -15,9 +15,12 @@
 - else
   %article.page#start
     %h1 Woah, you have a lot of connections! 
-    %p.txt We will need a little help finding the correct person. Please fill in his of her name below.
+    %p.txt
+      We will need a little help finding the correct person.
+      %br
+      Please fill in his of her name below.
     .big-search
-      %input{placeholder: "Search for a connection here...", type: "text", data: { type: "connection-search" } }
+      %input{placeholder: "Search by first- or lastname...", type: "text", data: { type: "connection-search" } }
       %i.icon-search
     .connection-results
       .fade
@@ -109,7 +112,7 @@
             %a.btn.buy{ href: "http://bol.com" } Buy  
   
   %article.page#pack
-    %h1 You have made the right choice! Now go and enrich your business relation.
+    %h1 Great choice! Let's proceed to Bol.com.
     
     .gift#the-gift
       %img{src: "http://s.s-bol.com/imgbase0/imagebase/large/FC/3/0/3/1/1000004013631303.jpg", class: "gift-image"}

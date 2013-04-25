@@ -76,15 +76,15 @@ define ['jquery'], () ->
     packOrder: ( index ) ->
       @navigateTo '#pack'
 
+      affiliateURL = "http://partnerprogramma.bol.com/click/click?p=1&t=url&f=API&s=20243&subid=" + @suggestions[index].attributes.id + "&url=" + encodeURI(@suggestions[index].attributes.url) + "&name=" + encodeURI( @suggestions[index].attributes.title ) 
       $( '.gift-image' ).attr 'src', @suggestions[index].attributes.cover.extra_large
-      $( '#actual-buy' ).attr 'href', @suggestions[index].attributes.url
+      $( '#actual-buy' ).attr 'href', affiliateURL
 
       newImage = new Image
       $( newImage ).load ->
         imageDimensions.w = newImage.width
         imageDimensions.h = newImage.height
         imageDimensions.r = newImage.width / newImage.height
-        console.log( imageDimensions );
         $( '.gift-image' ).css 'marginLeft': Math.round ( 300 * imageDimensions.r ) * -0.5
 
 
