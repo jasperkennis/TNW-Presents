@@ -4,7 +4,7 @@ class PagesController < ApplicationController
     create_client
     
     if cookies[:luser].nil?
-      request_token = @client.request_token(oauth_callback: 'http://0.0.0.0:3000')
+      request_token = @client.request_token(oauth_callback: ENV['redirect_url'] || Settings.redirect_url )
       rtoken = request_token.token
       
       if params[:oauth_verifier].nil?

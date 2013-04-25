@@ -10,6 +10,7 @@ gem 'requirejs-rails'
 gem 'linkedin'
 gem 'bol', git: 'git://github.com/jasperkennis/bol.git'
 gem 'rails_config'
+gem 'haml-rails'
 
 gem 'sqlite3', :group => [:development, :test]
 group :production do
@@ -22,7 +23,6 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'haml-rails'
   gem 'compass-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
