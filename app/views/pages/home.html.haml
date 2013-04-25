@@ -1,10 +1,10 @@
 - unless @linkedinvalid
-  %article.page.v-align
+  %article.page.v-align#start
     .mid
       %h1 Authenticate with LinkedIn!
       = link_to 'Connect GiftShop to LinkedIn', @oauth_url, class: "btn"
 - else
-  %article.page
+  %article.page#start
     %h1 Select a connection
     .big-search
       %input{placeholder: "Search for a connection here...", type: "text", data: { type: "connection-search" } }
@@ -81,18 +81,17 @@
   %article.page#gifts
     %h1 Gift listing
   
-    %div.gift-results
+    .gift-results
       - for x in 0...4
-        %div.gift-result
-          %div.wrap
+        .gift-result.loading
+          .wrap
             %div.gift-info
-              %h4 Andre F*cking Rieu
-              %p Ter gelegenheid van de aanstaande kroningsfeestelijkheden schreef de Koning van de Wals een splinternieuw stuk: De Kroningswals - een wals voor de Koning. Deze staat op deze bijzondere compilatie, waarop ook een niet eerder verschenen arrangement van het Wilhelmus.
-            %div{style: "background-image: url(http://s.s-bol.com/imgbase0/imagebase/large/FC/3/0/3/1/1000004013631303.jpg)", class: "gift-preview"}
+              %h4
+              %p
+            .gift-preview{ style: "background-image: none" }
           %i{class: "icon-info toggle"}
-          %div.gift-price
-            &euro; 8,99
-            %a{class: "btn buy", href: "http://bol.com"} Buy
+          .gift-price
+            %a{ class: "btn buy", href: "http://bol.com" } Buy
   
   
   %article.page
