@@ -31,6 +31,6 @@ class PagesController < ApplicationController
 
   private
     def create_client
-      @client ||= LinkedIn::Client.new( Settings.linkedin_key, Settings.linkedin_secret )
+      @client ||= LinkedIn::Client.new( ( ENV['linkedin_key'] || Settings.linkedin_key ), ( ENV['linkedin_secret'] || Settings.linkedin_secret) )
     end
 end
